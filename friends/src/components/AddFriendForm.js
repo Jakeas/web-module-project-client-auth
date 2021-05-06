@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import axiosWithAuth from '../utils/axiosWithAuth'
 
 const initialState = {
@@ -15,47 +16,44 @@ const AddFriendForm = () => {
       [e.target.name]: e.target.value})
   }
 
+  let history = useHistory()
+
   const onSubmit = e => {
     e.preventDefault()
 
     axiosWithAuth()
     .post('/api/friends', addFriend)
-
+    history.push('/protected')
   }
 
   return (
-    <div>
+    <div className="container">
       <form onSubmit={onSubmit}>
-      {/* <label> Id
-        <input 
-          type="text"
-          name="id"
-          value={addFriend.id}
-          onChange={handleChange}
-        /> */}
-      {/* </label> */}
-      <label> Name
+      <label>
         <input 
           type="text"
           name="name"
           value={addFriend.name}
           onChange={handleChange}
+          placeholder="Name"
         />
       </label>
-      <label> Age
+      <label>
         <input 
           type="text"
           name="age"
           value={addFriend.age}
           onChange={handleChange}
+          placeholder="Age"
         />
       </label>
-      <label> Email
+      <label>
         <input 
           type="email"
           name="email"
           value={addFriend.email}
           onChange={handleChange}
+          placeholder="Email"
         />
       </label>
       <button type="submit">Add Friend</button>

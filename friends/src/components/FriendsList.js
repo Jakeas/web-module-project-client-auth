@@ -16,23 +16,26 @@ const FriendsList = (props) => {
   }, [])
 
   return (
-    <div>
-      <h1>Friends</h1>
-      {friends.map(friend => (
-        <div key={friend.id}>
-          <div className="name">
-            {friend.name}
-            <div className="email">
-              {friend.email}
-              <div className="age">
-                Age: {friend.age}
+    <div className="topFriend"> 
+      <h1>Friends List</h1>
+      <div className="friendContainer">
+        {friends.map(friend => (
+          <div className="info">
+            <div key={friend.id}>
+              <div className="name">
+                {friend.name}
+                <div className="email">
+                  {friend.email}
+                  <div className="age">
+                    Age: {friend.age}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-
-      ))}
-    </div>
+        ))}
+      </div>
+     </div>  
     )
 }
 

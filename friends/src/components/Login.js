@@ -34,25 +34,27 @@ let history = useHistory()
   }
   
   return (
-    <div>
+    <div className="container">
       <form onSubmit={onLogin}>
-        <label> Username
+        <label> 
           <input
             type="text"
             name="username"
             value={credentials.username}
             onChange={handleChange}
+            placeholder="Username"
           />
         </label>   
-        <label> Password
+        <label>
           <input
-            type="text"
+            type="password"
             name="password"
             value={credentials.password}
             onChange={handleChange}
+            placeholder="Password"
           />
         </label>
-        <button type="submit">Log in</button>   
+        <button type="submit">Login</button>   
       </form> 
     </div>
   )
