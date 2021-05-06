@@ -5,6 +5,7 @@ import PrivateRoute from './components/PrivateRoute'
 
 import Login from './components/Login'
 import FriendsList from './components/FriendsList'
+import AddFriendForm from './components/AddFriendForm';
 
 
 function App(props) {
@@ -25,6 +26,9 @@ function App(props) {
         <li>
           <Link to="/protected">Friends List</Link>
         </li>
+        <li>
+          <Link to="/addfriend">Add Friend</Link>
+        </li>
       </ul>
 
       <Switch>
@@ -33,8 +37,10 @@ function App(props) {
 
         <Route path="/login" component={Login} />
 
-      </Switch>
+        <Route path="/addfriend" component={AddFriendForm} />
       
+      </Switch>
+
     </div>
   </Router>
   );

@@ -22,7 +22,7 @@ let history = useHistory()
   const onLogin = e => {
     e.preventDefault()
     axios
-      .post('http://localhost:5000/api/login', credentials)
+      .post('http://localhost:5000/api/login', { username: 'Lambda School', password: 'i<3Lambd4' })
       .then(res => {
         console.log({res})
         localStorage.setItem("token", res.data.payload)
