@@ -1,28 +1,13 @@
-import React from 'react'
-import axiosWithAuth from '../utils/axiosWithAuth'
+// import React from 'react'
+// import axiosWithAuth from '../utils/axiosWithAuth'
 
-const DeleteUser = () => {
+// const DeleteUser = () => {
 
-
-    const handleDelete= (e) => {
-        e.preventDefault()
-        axiosWithAuth()
-            .delete(`/api/friends/${id}`)
-            .then(res => {
-                console.log("delete res:", res)
-    
-           const deleteFriend = friends.filter(friend=>(friend.id !== id));
-              setFriends(deleteFriend(id))
-            })  
-            .catch(err => {
-                console.log("delete err:", err)
-            })
-    }
-    return (
-        <div>
+//     return (
+//         <div>
             
-        </div>
-    )
-}
+//         </div>
+//     )
+// }
 
-export default DeleteUser
+// export default DeleteUser

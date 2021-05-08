@@ -1,43 +1,48 @@
-import e from 'cors'
 import React, { useEffect, useState } from 'react'
-import { useHistory, useParams } from 'react-router'
+import { useParams } from 'react-router'
 import axiosWithAuth from '../utils/axiosWithAuth'
 
 
-const FriendsList = (props) => {
+const FriendsList = () => {
   const [friends, setFriends] = useState([])
   const { id } = useParams()
-  const { push } = useHistory
+  
+  // console.log(props)
 
   useEffect(()=>{
       axiosWithAuth()
         .get('/api/friends')
         .then(res => {
-          console.log("get res:", res)
           setFriends(res.data)
         })
         .catch(err =>{
-          console.log("get err:", err)
         })
-  }, [])
+  }, []) 
 
-  const handleDelete= (e) => {
+  const handleDelete= (e, id) => {
     e.preventDefault()
+    console.log({id})
+
+  // useEffect(()=>{
+
     axiosWithAuth()
-        .delete(`/api/friends/${id}`)
-        .then(res => {
-            console.log("delete res:", res)
+    .delete(`/api/friends/${id}`)
+    .then(res => {
+      console.log("delete res:", res)
+      setFriends(res.data)
+      
+      const deleteFriend = () => {   
+        (friends.filter(friend=>(friend.id !== Number(id))))};
+        (deleteFriend())
+      })  
+      .catch(err => {
+        console.log("delete err:", err)
+      })
+    // }, [])
+  }
+    //try useParams in App.js
 
-       const deleteFriend = friends.filter(friend=>(friend.id !== id));
-          setFriends(deleteFriend(id))
-          push('/protected')
-        })  
-        .catch(err => {
-            console.log("delete err:", err)
-        })
-}
-
-  return (
+    return (
     <div className="topFriend"> 
       <h1>Friends List</h1>
       <div className="friendContainer">
@@ -52,7 +57,7 @@ const FriendsList = (props) => {
                     Age: {friend.age}
                     <div className="buttons">
                       <button>Edit</button>
-                      <button onClick={handleDelete}>Delete</button>
+                      <button onClick={(e)=>handleDelete(e, friend.id)}>Delete</button>
                     </div>
                   </div>
                 </div>

@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import axiosWithAuth from '../utils/axiosWithAuth'
 
 const initialState = {
+  id: '',
   name:'',
   age: '',
   email: '',
